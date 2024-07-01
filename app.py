@@ -18,9 +18,8 @@ def predict():
         ISI = float(request.form.get('ISI'))
         BUI = float(request.form.get('BUI'))
         Bejaia = float(request.form.get('Region_Bejaia'))
-        Sidi_Bel = float(request.form.get('Region_Sidi_Bel'))
         
-        new_data_scaled = scaler.transform([[Rain,FFMC,DMC,ISI,BUI,Bejaia,Sidi_Bel]])
+        new_data_scaled = scaler.transform([[Rain,FFMC,DMC,ISI,BUI,Bejaia]])
         result = model.predict(new_data_scaled)
 
         return render_template('index.html',result=f"The predicted value is {result[0]}")
